@@ -1,0 +1,86 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Add mFi device",
+        "description": "Home Assistant takes over the role of the Ubiquiti mFi controller.",
+        "menu_options": {
+          "ssh": "Automatic (SSH login of the device)",
+          "manual": "Manual (MAC address + authkey)"
+        }
+      },
+      "ssh": {
+        "title": "Adopt via SSH",
+        "description": "Home Assistant logs into the device once over SSH, reads its key and points its inform URL to this server. A backup of the old setting is kept on the device.",
+        "data": {
+          "host": "Device IP / host",
+          "username": "SSH username",
+          "password": "SSH password",
+          "inform_host": "Address of Home Assistant (as seen by the device)",
+          "inform_port": "Inform port (TCP)",
+          "stun_port": "STUN / wake-up port (UDP)",
+          "keep_key": "Keep the existing key (old controller keeps working until the URL is switched back)"
+        }
+      },
+      "manual": {
+        "title": "Manual setup",
+        "description": "Point the device to `http://<Home Assistant>:<port>/inform` yourself (e.g. via SSH: `mca-ctrl -t connect -s <url> -k <authkey>`). Home Assistant waits for the first inform.",
+        "data": {
+          "mac": "MAC address (as sent in the inform header)",
+          "authkey": "Authkey (32 hex characters)",
+          "inform_port": "Inform port (TCP)",
+          "stun_port": "STUN / wake-up port (UDP)"
+        }
+      }
+    },
+    "progress": {
+      "provision": "Configuring the device and waiting for its first report (up to 90 s)...",
+      "wait": "Waiting for the first report of the device (up to 90 s)..."
+    },
+    "error": {
+      "cannot_connect": "SSH connection failed",
+      "invalid_auth": "SSH login rejected",
+      "provision_failed": "Configuring the device failed, see the log",
+      "port_in_use": "Inform/STUN port is already in use",
+      "no_inform": "The device did not report within 90 s",
+      "invalid_mac": "Invalid MAC address",
+      "invalid_key": "The authkey must be 32 hex characters"
+    },
+    "abort": {
+      "already_configured": "Device is already configured"
+    }
+  },
+  "entity": {
+    "switch": {
+      "outlet": {
+        "name": "{label}"
+      }
+    },
+    "sensor": {
+      "power": {
+        "name": "{label} power"
+      },
+      "energy": {
+        "name": "{label} energy"
+      },
+      "current": {
+        "name": "{label} current"
+      },
+      "voltage": {
+        "name": "{label} voltage"
+      },
+      "power_factor": {
+        "name": "{label} power factor"
+      },
+      "energy_last_month": {
+        "name": "{label} energy last month"
+      },
+      "total_power": {
+        "name": "Total power"
+      },
+      "ip_address": {
+        "name": "IP address"
+      }
+    }
+  }
+}

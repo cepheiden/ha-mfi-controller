@@ -1,0 +1,86 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "mFi-Gerät hinzufügen",
+        "description": "Home Assistant übernimmt die Rolle des Ubiquiti mFi Controllers.",
+        "menu_options": {
+          "ssh": "Automatisch (SSH-Login des Geräts)",
+          "manual": "Manuell (MAC-Adresse + Authkey)"
+        }
+      },
+      "ssh": {
+        "title": "Per SSH übernehmen",
+        "description": "Home Assistant meldet sich einmalig per SSH am Gerät an, liest den Schlüssel aus und stellt die Inform-URL auf diesen Server um. Eine Sicherung der alten Einstellung bleibt auf dem Gerät.",
+        "data": {
+          "host": "IP / Host des Geräts",
+          "username": "SSH-Benutzer",
+          "password": "SSH-Passwort",
+          "inform_host": "Adresse von Home Assistant (aus Sicht des Geräts)",
+          "inform_port": "Inform-Port (TCP)",
+          "stun_port": "STUN-/Weckruf-Port (UDP)",
+          "keep_key": "Vorhandenen Schlüssel behalten (alter Controller funktioniert nach Zurückstellen der URL weiter)"
+        }
+      },
+      "manual": {
+        "title": "Manuelle Einrichtung",
+        "description": "Stelle das Gerät selbst auf `http://<Home Assistant>:<Port>/inform` um (z. B. per SSH: `mca-ctrl -t connect -s <url> -k <authkey>`). Home Assistant wartet auf die erste Meldung.",
+        "data": {
+          "mac": "MAC-Adresse (wie im Inform-Header)",
+          "authkey": "Authkey (32 Hex-Zeichen)",
+          "inform_port": "Inform-Port (TCP)",
+          "stun_port": "STUN-/Weckruf-Port (UDP)"
+        }
+      }
+    },
+    "progress": {
+      "provision": "Gerät wird eingerichtet, warte auf die erste Meldung (bis zu 90 s) ...",
+      "wait": "Warte auf die erste Meldung des Geräts (bis zu 90 s) ..."
+    },
+    "error": {
+      "cannot_connect": "SSH-Verbindung fehlgeschlagen",
+      "invalid_auth": "SSH-Anmeldung abgelehnt",
+      "provision_failed": "Einrichtung am Gerät fehlgeschlagen, siehe Log",
+      "port_in_use": "Inform-/STUN-Port ist bereits belegt",
+      "no_inform": "Das Gerät hat sich nicht innerhalb von 90 s gemeldet",
+      "invalid_mac": "Ungültige MAC-Adresse",
+      "invalid_key": "Der Authkey muss aus 32 Hex-Zeichen bestehen"
+    },
+    "abort": {
+      "already_configured": "Gerät ist bereits eingerichtet"
+    }
+  },
+  "entity": {
+    "switch": {
+      "outlet": {
+        "name": "{label}"
+      }
+    },
+    "sensor": {
+      "power": {
+        "name": "{label} Leistung"
+      },
+      "energy": {
+        "name": "{label} Energie"
+      },
+      "current": {
+        "name": "{label} Strom"
+      },
+      "voltage": {
+        "name": "{label} Spannung"
+      },
+      "power_factor": {
+        "name": "{label} Leistungsfaktor"
+      },
+      "energy_last_month": {
+        "name": "{label} Energie Vormonat"
+      },
+      "total_power": {
+        "name": "Gesamtleistung"
+      },
+      "ip_address": {
+        "name": "IP-Adresse"
+      }
+    }
+  }
+}

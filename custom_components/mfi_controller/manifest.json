@@ -1,0 +1,14 @@
+{
+  "domain": "mfi_controller",
+  "name": "mFi Controller",
+  "codeowners": ["@cepheiden"],
+  "config_flow": true,
+  "dependencies": ["network"],
+  "documentation": "https://github.com/cepheiden/ha-mfi-controller",
+  "integration_type": "device",
+  "iot_class": "local_push",
+  "issue_tracker": "https://github.com/cepheiden/ha-mfi-controller/issues",
+  "loggers": ["custom_components.mfi_controller", "asyncssh"],
+  "requirements": ["asyncssh>=2.14.0"],
+  "version": "0.1.0"
+}
