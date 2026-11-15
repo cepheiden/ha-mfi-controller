@@ -24,7 +24,7 @@
       },
       "manual": {
         "title": "Manuelle Einrichtung",
-        "description": "Stelle das Gerät selbst auf `http://<Home Assistant>:<Port>/inform` um (z. B. per SSH: `mca-ctrl -t connect -s <url> -k <authkey>`). Home Assistant wartet auf die erste Meldung.",
+        "description": "Stelle das Gerät selbst auf `http://HA_IP:PORT/inform` um (z. B. per SSH: `mca-ctrl -t connect -s URL -k AUTHKEY`, siehe README). Home Assistant wartet auf die erste Meldung.",
         "data": {
           "mac": "MAC-Adresse (wie im Inform-Header)",
           "authkey": "Authkey (32 Hex-Zeichen)",

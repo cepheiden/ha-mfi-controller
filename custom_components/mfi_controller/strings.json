@@ -24,7 +24,7 @@
       },
       "manual": {
         "title": "Manual setup",
-        "description": "Point the device to `http://<Home Assistant>:<port>/inform` yourself (e.g. via SSH: `mca-ctrl -t connect -s <url> -k <authkey>`). Home Assistant waits for the first inform.",
+        "description": "Point the device to `http://HA_IP:PORT/inform` yourself (e.g. via SSH: `mca-ctrl -t connect -s URL -k AUTHKEY`, see README). Home Assistant waits for the first inform.",
         "data": {
           "mac": "MAC address (as sent in the inform header)",
           "authkey": "Authkey (32 hex characters)",
